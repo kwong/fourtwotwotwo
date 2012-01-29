@@ -1,0 +1,16 @@
+
+1) starting serial forwarder
+
+	./sf	SF_TCP_PORT_NUM	 DEV_ADDR	 TELOSB
+	e.g., ./sf 9001 /dev/ttyUSB0 telosb
+
+
+2) Sending from PC to mote, one can send upto ten 16-bit integer values. Note that if you need to send less than ten values then remaining values should be zero.
+
+	./send.py SF_HOST_IP	SF_TCP_PORT_NUM	INPUT_PARAMTERS
+	e.g., ./send.py 127.0.0.1 9001 1 2 3 4 5 0 0 0 0 0
+
+3) Receving from a mote,  one can receive upto ten 16-bit integer values.
+
+	./receiver.py SF_HOST_IP  SF_TCP_PORT_NUM
+	e.g., ./receive.py 127.0.0.1 9001
