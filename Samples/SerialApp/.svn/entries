@@ -1,0 +1,82 @@
+8
+
+dir
+41
+svn+ssh://alexander.ddns/media/OS/manju_files/repos/tinyos-2.1.1/apps/cs4222_apps/SerialApp
+svn+ssh://alexander.ddns/media/OS/manju_files/repos
+
+
+
+2011-01-25T09:30:08.135008Z
+41
+root
+
+
+svn:special svn:externals svn:needs-lock
+
+
+
+
+
+
+
+
+
+
+
+0fc004b1-1061-4c78-bf37-77ef8f3e36c6
+
+SerialC.nc
+file
+43
+
+
+
+2011-02-05T04:35:36.000000Z
+844ecb9f660663bc59461c7118da4a4d
+2011-01-25T09:41:44.724871Z
+43
+root
+
+SerialAppC.nc
+file
+
+
+
+
+2011-01-25T09:33:02.000000Z
+5107f787d1144cfb6e8247bba3e626fe
+2011-01-25T09:28:00.054999Z
+40
+root
+
+sf
+dir
+
+serial_msg.h
+file
+
+
+
+
+2011-01-25T09:33:02.000000Z
+a662f6bcbfb273501084edb239d50a4c
+2011-01-25T07:11:07.635051Z
+34
+root
+
+Makefile
+file
+
+
+
+
+2011-01-25T09:33:02.000000Z
+68d206f90e6bab26854565167313622b
+2011-01-25T07:11:07.635051Z
+34
+root
+
+client
+dir
+

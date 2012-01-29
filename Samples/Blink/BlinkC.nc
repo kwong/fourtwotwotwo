@@ -1,0 +1,22 @@
+module BlinkC
+{
+  uses { 
+		interface Leds;
+  	interface Timer<TMilli>;
+  	interface Boot;
+	}
+}
+implementation
+{
+  event void Boot.booted()
+  {
+    call Timer.startPeriodic(2000U);
+  }
+
+  event void Timer.fired()
+  {
+    call Leds.led0Toggle();
+  }
+  
+}
+

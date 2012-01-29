@@ -1,0 +1,2 @@
+COMPONENT=SerialAppC
+include $(MAKERULES)
