@@ -1,0 +1,9 @@
+module SerialSender C {
+  uses {
+    interface Boot;
+    interface AMSend as SerialSend;
+    interface Receive as SerialReceive;
+    interface SplitControl as AMControl;
+    interface Packet;    
+  }
+}
