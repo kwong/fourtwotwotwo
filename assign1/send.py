@@ -32,17 +32,17 @@ def main(*args):
     else:
       print 'error parsing input'
 
-  print a, b, c
+
 
   
   # sanity check
   assert len(a) == len(b) == len(c) 
 
   # fill blanks
-  a = a + [-1]*(3-len(a));
-  b = b + [-1]*(3-len(b));
-  c = c + [-1]*(3-len(c));
-  
+  a = a + [4]*(3-len(a));
+  b = b + [4]*(3-len(b));
+  c = c + [0]*(3-len(c));
+  # print a, b, c
   time.sleep(1)
 
   # send packet

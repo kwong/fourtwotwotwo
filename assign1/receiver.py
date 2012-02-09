@@ -21,7 +21,7 @@ class serial_recv():
     self.source = self.mif.addSource(moteString)
     time.sleep(1)
     self.mif.addListener(self, serial_msg.serial_msg)
-    time.sleep(1)
+
 
   def receive(self, src, m): 
     param_1 = m.get_param_one()

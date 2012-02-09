@@ -1,7 +1,7 @@
 #ifndef SERIAL_MSG
 #define SERIAL_MSG
 
-typedef struct nx_serial_msg {
+typedef nx_struct nx_serial_msg {
   nx_uint16_t param_one;
   nx_uint16_t param_two;
   nx_uint16_t param_three;
