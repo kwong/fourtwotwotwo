@@ -40,27 +40,28 @@ implementation {
     // do nothing
   }
 
-  task void handleReply();
+  void handleReply();
+  task void handleRedReply();
+  task void handleBlueReply();
+  task void handleGreenReply();
 
   
   /* Handle Timer fired() events */
   event void MilliTimer1.fired() {
     call Leds.led0Off();
-    msg_code = LED0DONE;
-    post handleReply();
+    
+    post handleRedReply();
     
   }
 
   event void MilliTimer2.fired() {
     call Leds.led1Off();
-    msg_code = LED1DONE;
-    post handleReply();
+    post handleGreenReply();
   }
 
   event void MilliTimer3.fired() {
     call Leds.led2Off();
-    msg_code = LED2DONE;
-    post handleReply();
+    post handleBlueReply();
   }
 
   // END fired() handling
@@ -77,13 +78,37 @@ implementation {
   void handleBlueOn(nx_uint16_t *duration);
   void handleCommand(nx_uint16_t *led_code, nx_uint16_t *mode, nx_uint16_t *duration);
 
+  task void handleRedReply() {
+    msg_code = LED0DONE;
+    if (locked) {
+      post handleRedReply();
+      return;
+    }
+    handleReply();
+  }
 
+  task void handleGreenReply() {
+    msg_code = LED1DONE;
+    if (locked) {
+      post handleGreenReply();
+      return;
+    }
+    handleReply();
+  }
 
-  task void handleReply()
+  task void handleBlueReply() {
+    msg_code = LED2DONE;
+    if (locked) {
+      post handleBlueReply();
+      return;
+    }
+    handleReply();
+  }
+
+  void handleReply()
   {
     atomic{
     if (locked) {
-      post handleReply();
       return;
     }
     else {
@@ -157,19 +182,9 @@ implementation {
   event message_t* SerialReceive.receive(message_t* bufPtr, void* payload, uint8_t len)
   {
     serial_msg_t* rcm = (serial_msg_t *)(payload);
-    /*if(rcm->param_one  && rcm->param_four) {
-      call Leds.led0On();
-      call MilliTimer1.startOneShot(rcm->param_seven*1000);
-    }
-    if(rcm->param_two  && rcm->param_five) {
-      call Leds.led1On();
-      call MilliTimer2.startOneShot(rcm->param_eight*1000);
-    }
-    if(rcm->param_three && rcm->param_six) {
-      call Leds.led2On();
-      call MilliTimer3.startOneShot(rcm->param_nine*1000);
-    }
-    */
+
+
+    /* Handle control commands */
     handleCommand(&rcm->param_one, &rcm->param_four, &rcm->param_seven);
     handleCommand(&rcm->param_two, &rcm->param_five, &rcm->param_eight);
     handleCommand(&rcm->param_three, &rcm->param_six, &rcm->param_nine);
