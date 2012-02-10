@@ -23,9 +23,15 @@ class serial_recv():
     self.mif.addListener(self, serial_msg.serial_msg)
 
 
-  def receive(self, src, m): 
+  def receive(self, src, m):
+    
     param_1 = m.get_param_one()
-    print "Reply from Mote: Job on Led%s completed" % param_1
+    leds = {0:'Red LED', 1:'Green LED', 2:'Blue LED'}
+    if param_1 in [0, 1, 2]:
+      print time.strftime('%X %x %Z'), ":: Job on %s completed" % leds[param_1]
+    elif param_1 in [3, 4, 5]:
+      print time.strftime('%X %x %Z'), ":: %s turned off" % leds[param_1 - 3]
+    
 
 
 if __name__=='__main__':
