@@ -26,7 +26,16 @@ class serial_recv():
   def receive(self, src, m):
     
     msg_type = m.get_type()
-    print time.strftime('[%X]'), "Light=%d Humidity=%d Temperature=%dC" % (m.get_light_a(), m.get_humidity_a(), (m.get_temp_a()-3955)/100);
+    print time.strftime('[%X]') , \
+        ('Light@A=%d' % m.get_light_a()) or '', \
+        (msg_type == 1) and ('Humidity@A=%d' % m.get_humidity_a()) or '', \
+        ('Temperature@A=%dC' % m.get_temp_a()) or '', \
+        (msg_type == 2) and ('Light@B=%d' % m.get_light_b()) or '', \
+        (msg_type == 2) and ('Temperature@B=%dC' % m.get_temp_b()) or ''
+
+    
+                                           
+                                           
 
 
 if __name__=='__main__':
