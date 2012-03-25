@@ -1,3 +1,5 @@
+#!/usr/bin/env python
+
 #Basic imports
 from ctypes import *
 import sys
