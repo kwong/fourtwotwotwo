@@ -20,6 +20,6 @@ Instructions
 
 Contact me @
 Email: kangwei@nus.edu.sg
-Mobile: 96285895
+
 
 
